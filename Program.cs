@@ -24,6 +24,26 @@ app.MapGet("/estudiantes", () =>
 })
 .WithName("GetEstudiantes");
 
+app.MapGet("/estudiantes/{id}/telefono-valido", (int id) =>
+{
+    var estudiante = estudiantes.FirstOrDefault(e => e.Id == id);
+
+    if (estudiante is null)
+        return Results.NotFound();
+
+    bool telefonoValido = estudiante.Telefono.Length == 10 &&
+                           estudiante.Telefono.All(char.IsDigit);
+
+    return Results.Ok(new
+    {
+        estudiante.Id,
+        estudiante.Nombre,
+        estudiante.Telefono,
+        TelefonoValido = telefonoValido
+    });
+})
+.WithName("ValidarTelefono");
+
 app.Run();
 
 record Estudiante(int Id, string Nombre, string Telefono);
