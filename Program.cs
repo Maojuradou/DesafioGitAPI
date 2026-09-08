@@ -15,7 +15,7 @@ var estudiantes = new[]
 {
     new Estudiante(1, "Carlos Pérez", "3001234567"),
     new Estudiante(2, "María López", "3109876543"),
-    new Estudiante(3, "Juan García", "3205551234")
+   new Estudiante(3, "Juan García", "3012345678")
 };
 
 app.MapGet("/estudiantes", () =>
