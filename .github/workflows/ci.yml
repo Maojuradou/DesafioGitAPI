@@ -2,7 +2,7 @@ name: CI - APIEstudiantes
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, feature/cambio-prueba ]
   pull_request:
     branches: [ main ]
 
